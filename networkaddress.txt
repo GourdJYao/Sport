@@ -1,0 +1,4 @@
+国药地址：http://app2.sfda.gov.cn/datasearchp/index1.do?tableId=25&tableName=TABLE25&tableView=国产药品&Id=58199
+外国药地址：
+公司
+http://app2.sfda.gov.cn/datasearchp/index1.do?tableId=25&tableName=TABLE25&company=company&tableView=国产药品&Id=58799
