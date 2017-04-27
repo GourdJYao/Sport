@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace：必须与对应的接口全类名一致 id:必须与对应接口的某个对应的方法名一致 -->
+<mapper namespace="com.yaojian.mapper.DrugsNameInfoMapper">
+    
+    <resultMap id="resourceResultMap" type="com.yaojian.model.DrugsNameInfo">
+		<result column="id" property="id" />
+		<result column="drugsname" property="drugsname" />
+		<result column="updatedate" property="updatedate" />
+	</resultMap>
+
+	<insert id="save" parameterType="com.yaojian.model.DrugsNameInfo">
+		insert into
+		t_drugsname_info(drugsname,updatedate)
+		values(#{drugsname},#{updatedate});
+	</insert>
+
+	<update id="update" parameterType="com.yaojian.model.DrugsNameInfo">
+		update t_drugsname_info set
+		id=#{id},drugsname=#{drugsname},updatedate=#{updatedate}
+		where id=#{id}
+	</update>
+
+	<delete id="delete" parameterType="int">
+		delete from t_drugsname_info where
+		id=#{id}
+	</delete>
+
+	<!-- mybsits_config中配置的alias类别名,也可直接配置resultType为类路劲 -->
+	<select id="findById" parameterType="int" resultType="com.yaojian.model.DrugsNameInfo">
+		select
+		id,drugsname,updatedate
+		from t_drugsname_info where
+		id=#{id};
+	</select>
+
+	<select id="findAll" resultType="com.yaojian.model.DrugsNameInfo">
+		select
+		id,drugsname,updatedate
+		from t_drugsname_info;
+	</select>
+	
+	<select id="findByDrugsNameInfo" parameterType="User" resultType="com.yaojian.model.DrugsNameInfo">
+		select
+		id,drugsname,updatedate
+		from t_drugsname_info WHERE drugsname=#{drugsname};
+	</select>
+</mapper>

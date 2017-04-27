@@ -6,6 +6,7 @@
 	<!-- 实体类,简称 -设置别名 -->
 	<typeAliases>
 		<typeAlias alias="User" type="com.yaojian.model.User" />
+		<typeAlias alias="DrugsNameInfo" type="com.yaojian.model.DrugsNameInfo" />
 	</typeAliases>
 	<!-- 实体接口映射资源 -->
 	<!--
@@ -13,6 +14,7 @@
 	-->
 	<mappers>
 		<mapper resource="com/yaojian/mapper/userMapper.xml" />
+		<mapper resource="com/yaojian/mapper/drugsNameInfoMapper.xml" />
 	</mappers>
 
 </configuration>  
