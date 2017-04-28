@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace：必须与对应的接口全类名一致 id:必须与对应接口的某个对应的方法名一致 -->
+<mapper namespace="com.yaojian.mapper.DrugsInfoMapper">
+    
+    <resultMap id="resourceResultMap" type="com.yaojian.model.DrugsInfo">
+		<result column="drugsid" property="drugsid" />
+		<result column="cfdaid" property="cfdaid" />
+		<result column="drugsname" property="drugsname" />
+		<result column="pizhuwenhao" property="pizhuwenhao" />
+		<result column="yingwenmingchen" property="yingwenmingchen" />
+		<result column="shangpingming" property="shangpingming" />
+		<result column="jixing" property="jixing" />
+		<result column="guige" property="guige" />
+		<result column="shengchandanweiid" property="shengchandanweiid" />
+		<result column="shengchangdanweiname" property="shengchangdanweiname" />
+		<result column="shengchandizhi" property="shengchandizhi" />
+		<result column="chanpinleixing" property="chanpinleixing" />
+		<result column="pizhunriqi" property="pizhunriqi" />
+		<result column="yuanpizhuwenhao" property="yuanpizhuwenhao" />
+		<result column="yaopinbenweima" property="yaopinbenweima" />
+		<result column="yaopinbenweimabeizhu" property="yaopinbenweimabeizhu" />
+		<result column="gmplist" property="gmplist" />
+	</resultMap>
+
+	<insert id="save" parameterType="com.yaojian.model.DrugsInfo">
+		insert into
+		t_cn_drugs_info(cfdaid,drugsname,pizhuwenhao,yingwenmingchen,shangpingming,jixing,guige, shengchandanweiid,shengchangdanweiname,shengchandizhi,chanpinleixing,pizhunriqi,yuanpizhuwenhao,yaopinbenweima,yaopinbenweimabeizhu,gmplist)
+		values(#{cfdaid},#{drugsname},#{pizhuwenhao},#{yingwenmingchen},#{shangpingming},#{jixing},#{guige},#{shengchandanweiid},#{shengchangdanweiname},#{shengchandizhi},#{chanpinleixing},#{pizhunriqi},#{yuanpizhuwenhao},#{yaopinbenweima},#{yaopinbenweimabeizhu},#{gmplist});
+	</insert>
+
+	<update id="update" parameterType="com.yaojian.model.DrugsInfo">
+		update t_cn_drugs_info set
+		drugsid=#{drugsid},
+		cfdaid=#{cfdaid},
+		drugsname=#{drugsname},
+		pizhuwenhao=#{pizhuwenhao},
+		yingwenmingchen=#{yingwenmingchen},
+		shangpingming=#{shangpingming},
+		jixing=#{jixing},guige=#{guige},
+		shengchandanweiid=#{shengchandanweiid},
+		shengchangdanweiname=#{shengchangdanweiname},
+		shengchandizhi=#{shengchandizhi},
+		chanpinleixing=#{chanpinleixing},
+		pizhunriqi=#{pizhunriqi},
+		yuanpizhuwenhao=#{yuanpizhuwenhao},
+		yaopinbenweima=#{yaopinbenweima},
+		yaopinbenweimabeizhu=#{yaopinbenweimabeizhu},
+		gmplist=#{gmplist}
+		where drugsid=#{drugsid}
+	</update>
+
+	<delete id="delete" parameterType="int">
+		delete from t_cn_drugs_info where
+		drugsid=#{drugsid}
+	</delete>
+
+	<!-- mybsits_config中配置的alias类别名,也可直接配置resultType为类路劲 -->
+	<select id="findById" parameterType="int" resultType="com.yaojian.model.DrugsInfo">
+		select
+		drugsid,cfdaid,drugsname,pizhuwenhao,yingwenmingchen,shangpingming,jixing,guige, shengchandanweiid,shengchangdanweiname,shengchandizhi,chanpinleixing,pizhunriqi,yuanpizhuwenhao,yaopinbenweima,yaopinbenweimabeizhu,gmplist
+		from t_cn_drugs_info where
+		drugsid=#{drugsid};
+	</select>
+
+	<select id="findAll" resultType="com.yaojian.model.DrugsInfo">
+		select
+		drugsid,cfdaid,drugsname,pizhuwenhao,yingwenmingchen,shangpingming,jixing,guige, shengchandanweiid,shengchangdanweiname,shengchandizhi,chanpinleixing,pizhunriqi,yuanpizhuwenhao,yaopinbenweima,yaopinbenweimabeizhu,gmplist
+		from t_cn_drugs_info;
+	</select>
+	
+	<select id="findByDrugsInfo" parameterType="DrugsInfo" resultType="com.yaojian.model.DrugsInfo">
+		select
+		drugsid,cfdaid,drugsname,pizhuwenhao,yingwenmingchen,shangpingming,jixing,guige, shengchandanweiid,shengchangdanweiname,shengchandizhi,chanpinleixing,pizhunriqi,yuanpizhuwenhao,yaopinbenweima,yaopinbenweimabeizhu,gmplist
+		from t_cn_drugs_info WHERE cfdaid=#{cfdaid} AND drugsname=#{drugsname};
+	</select>
+</mapper>

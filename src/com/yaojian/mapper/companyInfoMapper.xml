@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace：必须与对应的接口全类名一致 id:必须与对应接口的某个对应的方法名一致 -->
+<mapper namespace="com.yaojian.mapper.CompanyInfoMapper">
+    
+    <resultMap id="resourceResultMap" type="com.yaojian.model.CompanyInfo">
+		<result column="companyid" property="companyid" />
+		<result column="serverid" property="serverid" />
+		<result column="bianhao" property="bianhao" />
+		<result column="fenleima" property="fenleima" />
+		<result column="shengshi" property="shengshi" />
+		<result column="qiyemingcheng" property="qiyemingcheng" />
+		<result column="fadingdaibiaoren" property="fadingdaibiaoren" />
+		<result column="qiyefuzeren" property="qiyefuzeren" />
+		<result column="zhucedizhi" property="zhucedizhi" />
+		<result column="shengchandizhi" property="shengchandizhi" />
+		<result column="shechanfanwei" property="shechanfanwei" />
+		<result column="fazhengriqi" property="fazhengriqi" />
+		<result column="youxiaoqizhi" property="youxiaoqizhi" />
+		<result column="fazhengjiguan" property="fazhengjiguan" />
+		<result column="qianfaren" property="qianfaren" />
+		<result column="richangjianguanjigou" property="richangjianguanjigou" />
+		<result column="richangjianguanrenyuan" property="richangjianguanrenyuan" />
+		<result column="shehuixinyongdaima" property="shehuixinyongdaima" />
+		<result column="jiandujubaodianhua" property="jiandujubaodianhua" />
+		<result column="beizhu" property="beizhu" />
+		<result column="ziliangfuzeren" property="ziliangfuzeren" />
+	</resultMap>
+
+	<insert id="save" parameterType="com.yaojian.model.CompanyInfo">
+		insert into
+		t_company_info(serverid,bianhao,fenleima,shengshi,qiyemingcheng,fadingdaibiaoren,qiyefuzeren,zhucedizhi,shengchandizhi,shechanfanwei,fazhengriqi,youxiaoqizhi,fazhengjiguan,qianfaren,richangjianguanjigou,richangjianguanrenyuan,shehuixinyongdaima,jiandujubaodianhua,beizhu,ziliangfuzeren)
+		values(#{serverid},#{bianhao},#{fenleima},#{shengshi},#{qiyemingcheng},#{fadingdaibiaoren},#{qiyefuzeren},#{zhucedizhi},#{shengchandizhi},#{shechanfanwei},#{fazhengriqi},#{youxiaoqizhi},#{fazhengjiguan},#{qianfaren},#{richangjianguanjigou},#{richangjianguanrenyuan},#{shehuixinyongdaima},#{jiandujubaodianhua},#{beizhu},#{ziliangfuzeren});
+	</insert>
+
+	<update id="update" parameterType="com.yaojian.model.CompanyInfo">
+		update t_company_info set
+		companyid=#{companyid},serverid=#{serverid},bianhao=#{bianhao},fenleima=#{fenleima},shengshi=#{shengshi},qiyemingcheng=#{qiyemingcheng},fadingdaibiaoren=#{fadingdaibiaoren},qiyefuzeren=#{qiyefuzeren},zhucedizhi=#{zhucedizhi},shengchandizhi=#{shengchandizhi},shechanfanwei=#{shechanfanwei},fazhengriqi=#{fazhengriqi},youxiaoqizhi=#{youxiaoqizhi},fazhengjiguan=#{fazhengjiguan},qianfaren=#{qianfaren},richangjianguanjigou=#{richangjianguanjigou},richangjianguanrenyuan=#{richangjianguanrenyuan},shehuixinyongdaima=#{shehuixinyongdaima},jiandujubaodianhua=#{jiandujubaodianhua},beizhu=#{beizhu},ziliangfuzeren=#{ziliangfuzeren}
+		where companyid=#{companyid}
+	</update>
+
+	<delete id="delete" parameterType="int">
+		delete from t_company_info where
+		companyid=#{companyid}
+	</delete>
+
+	<!-- mybsits_config中配置的alias类别名,也可直接配置resultType为类路劲 -->
+	<select id="findById" parameterType="int" resultType="com.yaojian.model.CompanyInfo">
+		select
+		companyid,serverid,bianhao,fenleima,shengshi,qiyemingcheng,fadingdaibiaoren,qiyefuzeren,zhucedizhi,shengchandizhi,shechanfanwei,fazhengriqi,youxiaoqizhi,fazhengjiguan,qianfaren,richangjianguanjigou,richangjianguanrenyuan,shehuixinyongdaima,jiandujubaodianhua,beizhu,ziliangfuzeren
+		from t_company_info where
+		companyid=#{companyid};
+	</select>
+
+	<select id="findAll" resultType="com.yaojian.model.CompanyInfo">
+		select
+		companyid,serverid,bianhao,fenleima,shengshi,qiyemingcheng,fadingdaibiaoren,qiyefuzeren,zhucedizhi,shengchandizhi,shechanfanwei,fazhengriqi,youxiaoqizhi,fazhengjiguan,qianfaren,richangjianguanjigou,richangjianguanrenyuan,shehuixinyongdaima,jiandujubaodianhua,beizhu,ziliangfuzeren
+		from t_company_info;
+	</select>
+	
+	<select id="findByCompanyInfo" parameterType="CompanyInfo" resultType="com.yaojian.model.CompanyInfo">
+		select
+		companyid,serverid,bianhao,fenleima,shengshi,qiyemingcheng,fadingdaibiaoren,qiyefuzeren,zhucedizhi,shengchandizhi,shechanfanwei,fazhengriqi,youxiaoqizhi,fazhengjiguan,qianfaren,richangjianguanjigou,richangjianguanrenyuan,shehuixinyongdaima,jiandujubaodianhua,beizhu,ziliangfuzeren
+		from t_company_info WHERE serverid=#{serverid} AND bianhao=#{bianhao};
+	</select>
+</mapper>

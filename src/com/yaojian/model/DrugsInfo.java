@@ -1,7 +1,7 @@
 package com.yaojian.model;
 
 public class DrugsInfo {
-	private Integer id;
+	private Integer drugsid;
 	private Integer cfdaid;
 	private String drugsname;
 	private String pizhuwenhao;
@@ -19,12 +19,12 @@ public class DrugsInfo {
 	private String yaopinbenweimabeizhu;
 	private String gmplist;
 
-	public Integer getId() {
-		return id;
+	public Integer getDrugsid() {
+		return drugsid;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setDrugsid(Integer drugsid) {
+		this.drugsid = drugsid;
 	}
 
 	public Integer getCfdaid() {

@@ -1,7 +1,7 @@
 package com.yaojian.model;
 
 public class GmpInfo {
-	private String id;
+	private String gmpid;
 	private String serverid;
 	private String gongsimingchen;
 	private String shengfen;
@@ -15,11 +15,12 @@ public class GmpInfo {
 	private String pizhuyanxuderenzhengfanwei;
 	private String renzhengmpbanben;
 	private String beizhu;
-	public String getId() {
-		return id;
+	
+	public String getGmpid() {
+		return gmpid;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setGmpid(String gmpid) {
+		this.gmpid = gmpid;
 	}
 	public String getServerid() {
 		return serverid;

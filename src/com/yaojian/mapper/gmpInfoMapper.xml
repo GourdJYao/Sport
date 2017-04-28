@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace：必须与对应的接口全类名一致 id:必须与对应接口的某个对应的方法名一致 -->
+<mapper namespace="com.yaojian.mapper.GmpInfoMapper">
+
+	<resultMap id="resourceResultMap" type="com.yaojian.model.GmpInfo">
+		<result column="gmpid" property="gmpid" />
+		<result column="serverid" property="serverid" />
+		<result column="gongsimingchen" property="gongsimingchen" />
+		<result column="shengfen" property="shengfen" />
+		<result column="zhengshubianhao" property="zhengshubianhao" />
+		<result column="dizhi" property="dizhi" />
+		<result column="rengzhengfanwei" property="rengzhengfanwei" />
+		<result column="fazhengshijian" property="fazhengshijian" />
+		<result column="youxiaojiezhiri" property="youxiaojiezhiri" />
+		<result column="pizhuyanxuriqi" property="pizhuyanxuriqi" />
+		<result column="youxiaoqiyanxuzhi" property="youxiaoqiyanxuzhi" />
+		<result column="pizhuyanxuderenzhengfanwei" property="pizhuyanxuderenzhengfanwei" />
+		<result column="renzhengmpbanben" property="renzhengmpbanben" />
+		<result column="beizhu" property="beizhu" />
+	</resultMap>
+
+	<insert id="save" parameterType="com.yaojian.model.GmpInfo">
+		insert into
+		t_gmp_info(serverid,gongsimingchen,shengfen,zhengshubianhao,dizhi,rengzhengfanwei,fazhengshijian,youxiaojiezhiri,pizhuyanxuriqi,youxiaoqiyanxuzhi,pizhuyanxuderenzhengfanwei,renzhengmpbanben,beizhu)
+		values(#{serverid},#{gongsimingchen},#{shengfen},#{zhengshubianhao},#{dizhi},#{rengzhengfanwei},#{fazhengshijian},#{youxiaojiezhiri},#{pizhuyanxuriqi},#{youxiaoqiyanxuzhi},#{pizhuyanxuderenzhengfanwei},#{renzhengmpbanben},#{beizhu});
+	</insert>
+
+	<update id="update" parameterType="com.yaojian.model.GmpInfo">
+		update t_gmp_info set
+		gmpid=#{gmpid},serverid=#{serverid},gongsimingchen=#{gongsimingchen},shengfen=#{shengfen},zhengshubianhao=#{zhengshubianhao},dizhi=#{dizhi},rengzhengfanwei=#{rengzhengfanwei},fazhengshijian=#{fazhengshijian},youxiaojiezhiri=#{youxiaojiezhiri},pizhuyanxuriqi=#{pizhuyanxuriqi},youxiaoqiyanxuzhi=#{youxiaoqiyanxuzhi},pizhuyanxuderenzhengfanwei=#{pizhuyanxuderenzhengfanwei},renzhengmpbanben=#{renzhengmpbanben},beizhu=#{beizhu}
+		where gmpid=#{gmpid}
+	</update>
+
+	<delete id="delete" parameterType="int">
+		delete from t_gmp_info where
+		gmpid=#{gmpid}
+	</delete>
+
+	<!-- mybsits_config中配置的alias类别名,也可直接配置resultType为类路劲 -->
+	<select id="findById" parameterType="int" resultType="com.yaojian.model.GmpInfo">
+		select
+		gmpid,serverid,gongsimingchen,shengfen,zhengshubianhao,dizhi,rengzhengfanwei,fazhengshijian,youxiaojiezhiri,pizhuyanxuriqi,youxiaoqiyanxuzhi,pizhuyanxuderenzhengfanwei,renzhengmpbanben,beizhu,serverid,gongsimingchen,shengfen,zhengshubianhao,dizhi,rengzhengfanwei,fazhengshijian,youxiaojiezhiri,pizhuyanxuriqi,youxiaoqiyanxuzhi,pizhuyanxuderenzhengfanwei,renzhengmpbanben,beizhu
+		from t_gmp_info where
+		gmpid=#{gmpid};
+	</select>
+
+	<select id="findAll" resultType="com.yaojian.model.GmpInfo">
+		select
+		gmpid,serverid,gongsimingchen,shengfen,zhengshubianhao,dizhi,rengzhengfanwei,fazhengshijian,youxiaojiezhiri,pizhuyanxuriqi,youxiaoqiyanxuzhi,pizhuyanxuderenzhengfanwei,renzhengmpbanben,beizhu,serverid,gongsimingchen,shengfen,zhengshubianhao,dizhi,rengzhengfanwei,fazhengshijian,youxiaojiezhiri,pizhuyanxuriqi,youxiaoqiyanxuzhi,pizhuyanxuderenzhengfanwei,renzhengmpbanben,beizhu
+		from t_gmp_info;
+	</select>
+
+	<select id="findByGmpInfo" parameterType="GmpInfo"
+		resultType="com.yaojian.model.GmpInfo">
+		select
+		gmpid,serverid,gongsimingchen,shengfen,zhengshubianhao,dizhi,rengzhengfanwei,fazhengshijian,youxiaojiezhiri,pizhuyanxuriqi,youxiaoqiyanxuzhi,pizhuyanxuderenzhengfanwei,renzhengmpbanben,beizhu,serverid,gongsimingchen,shengfen,zhengshubianhao,dizhi,rengzhengfanwei,fazhengshijian,youxiaojiezhiri,pizhuyanxuriqi,youxiaoqiyanxuzhi,pizhuyanxuderenzhengfanwei,renzhengmpbanben,beizhu
+		from t_gmp_info WHERE serverid=#{serverid} AND
+		gongsimingchen=#{gongsimingchen};
+	</select>
+</mapper>

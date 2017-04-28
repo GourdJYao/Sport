@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace：必须与对应的接口全类名一致 id:必须与对应接口的某个对应的方法名一致 -->
+<mapper namespace="com.yaojian.mapper.AdvertisementInfoMapper">
+    
+    <resultMap id="resourceResultMap" type="com.yaojian.model.AdvertisementInfo">
+		<result column="advertiseid" property="advertiseid" />
+		<result column="serverid" property="serverid" />
+		<result column="yaopingmingzi" property="yaopingmingzi" />
+		<result column="yaopingguanggaopizhuwenhao" property="yaopingguanggaopizhuwenhao" />
+		<result column="danweimingchen" property="danweimingchen" />
+		<result column="dizhi" property="dizhi" />
+		<result column="youzhengbianma" property="youzhengbianma" />
+		<result column="tongyongmingchen" property="tongyongmingchen" />
+		<result column="shangpingmingcheng" property="shangpingmingcheng" />
+		<result column="shangbiaomingcheng" property="shangbiaomingcheng" />
+		<result column="chufangneixing" property="chufangneixing" />
+		<result column="guanggaoleixing" property="guanggaoleixing" />
+		<result column="shichang" property="shichang" />
+		<result column="guanggaoyouxiaoqi" property="guanggaoyouxiaoqi" />
+		<result column="guanggaoneirong" property="guanggaoneirong" />
+		<result column="pizhunweihao" property="pizhunweihao" />
+		<result column="beizhu" property="beizhu" />
+	</resultMap>
+
+	<insert id="save" parameterType="com.yaojian.model.AdvertisementInfo">
+		insert into
+		t_drugsadvertisement_info(serverid,yaopingmingzi,yaopingguanggaopizhuwenhao,danweimingchen,dizhi,youzhengbianma,tongyongmingchen,shangpingmingcheng,shangbiaomingcheng,chufangneixing,guanggaoleixing,shichang,guanggaoyouxiaoqi,guanggaoneirong,pizhunweihao,beizhu)
+		values(#{advertiseid},#{serverid},#{yaopingmingzi},#{yaopingguanggaopizhuwenhao},#{danweimingchen},#{dizhi},#{youzhengbianma},#{tongyongmingchen},#{shangpingmingcheng},#{shangbiaomingcheng},#{chufangneixing},#{guanggaoleixing},#{shichang},#{guanggaoyouxiaoqi},#{guanggaoneirong},#{pizhunweihao},#{beizhu});
+	</insert>
+
+	<update id="update" parameterType="com.yaojian.model.AdvertisementInfo">
+		update t_drugsadvertisement_info set
+		advertiseid=#{advertiseid},
+		serverid=#{serverid},
+		yaopingmingzi=#{yaopingmingzi},
+		yaopingguanggaopizhuwenhao=#{yaopingguanggaopizhuwenhao},
+		danweimingchen=#{danweimingchen},
+		dizhi=#{dizhi},
+		youzhengbianma=#{youzhengbianma},
+		tongyongmingchen=#{tongyongmingchen},
+		shangpingmingcheng=#{shangpingmingcheng},
+		shangbiaomingcheng=#{shangbiaomingcheng},
+		chufangneixing=#{chufangneixing},
+		guanggaoleixing=#{guanggaoleixing},
+		shichang=#{shichang},
+		guanggaoyouxiaoqi=#{guanggaoyouxiaoqi},
+		guanggaoneirong=#{guanggaoneirong},
+		pizhunweihao=#{pizhunweihao},
+		beizhu=#{beizhu}
+		where advertiseid=#{advertiseid}
+	</update>
+
+	<delete id="delete" parameterType="int">
+		delete from t_drugsadvertisement_info where
+		advertiseid=#{advertiseid}
+	</delete>
+
+	<!-- mybsits_config中配置的alias类别名,也可直接配置resultType为类路劲 -->
+	<select id="findById" parameterType="int" resultType="com.yaojian.model.AdvertisementInfo">
+		select
+		advertiseid,serverid,yaopingmingzi,yaopingguanggaopizhuwenhao,danweimingchen,dizhi,youzhengbianma,tongyongmingchen,shangpingmingcheng,shangbiaomingcheng,chufangneixing,guanggaoleixing,shichang,guanggaoyouxiaoqi,guanggaoneirong,pizhunweihao,beizhu
+		from t_drugsadvertisement_info where
+		advertiseid=#{advertiseid};
+	</select>
+
+	<select id="findAll" resultType="com.yaojian.model.AdvertisementInfo">
+		select
+		advertiseid,serverid,yaopingmingzi,yaopingguanggaopizhuwenhao,danweimingchen,dizhi,youzhengbianma,tongyongmingchen,shangpingmingcheng,shangbiaomingcheng,chufangneixing,guanggaoleixing,shichang,guanggaoyouxiaoqi,guanggaoneirong,pizhunweihao,beizhu
+		from t_drugsadvertisement_info;
+	</select>
+	
+	<select id="findByAdvertisementInfo" parameterType="AdvertisementInfo" resultType="com.yaojian.model.AdvertisementInfo">
+		select
+		advertiseid,serverid,yaopingmingzi,yaopingguanggaopizhuwenhao,danweimingchen,dizhi,youzhengbianma,tongyongmingchen,shangpingmingcheng,shangbiaomingcheng,chufangneixing,guanggaoleixing,shichang,guanggaoyouxiaoqi,guanggaoneirong,pizhunweihao,beizhu
+		from t_drugsadvertisement_info WHERE serverid=#{serverid} AND drugsname=#{drugsname};
+	</select>
+</mapper>
+

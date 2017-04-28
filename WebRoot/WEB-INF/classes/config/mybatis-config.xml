@@ -7,6 +7,10 @@
 	<typeAliases>
 		<typeAlias alias="User" type="com.yaojian.model.User" />
 		<typeAlias alias="DrugsNameInfo" type="com.yaojian.model.DrugsNameInfo" />
+		<typeAlias alias="DrugsInfo" type="com.yaojian.model.DrugsInfo" />
+		<typeAlias alias="AdvertisementInfo" type="com.yaojian.model.AdvertisementInfo" />
+		<typeAlias alias="GmpInfo" type="com.yaojian.model.GmpInfo" />
+		<typeAlias alias="CompanyInfo" type="com.yaojian.model.CompanyInfo" />
 	</typeAliases>
 	<!-- 实体接口映射资源 -->
 	<!--
@@ -15,6 +19,10 @@
 	<mappers>
 		<mapper resource="com/yaojian/mapper/userMapper.xml" />
 		<mapper resource="com/yaojian/mapper/drugsNameInfoMapper.xml" />
+		<mapper resource="com/yaojian/mapper/drugsInfoMapper.xml" />
+		<mapper resource="com/yaojian/mapper/advertisementInfoMapper.xml" />
+		<mapper resource="com/yaojian/mapper/gmpInfoMapper.xml" />
+		<mapper resource="com/yaojian/mapper/companyInfoMapper.xml" />
 	</mappers>
 
 </configuration>  

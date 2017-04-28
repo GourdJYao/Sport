@@ -1,7 +1,7 @@
 package com.yaojian.model;
 
 public class AdvertisementInfo {
-	private Integer id;
+	private Integer advertiseid;
 	private Integer serverid;
 	private String yaopingmingzi;
 	private String yaopingguanggaopizhuwenhao;
@@ -18,11 +18,12 @@ public class AdvertisementInfo {
 	private String guanggaoneirong;
 	private String pizhunweihao;
 	private String beizhu;
-	public Integer getId() {
-		return id;
+	
+	public Integer getAdvertiseid() {
+		return advertiseid;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+	public void setAdvertiseid(Integer advertiseid) {
+		this.advertiseid = advertiseid;
 	}
 	public String getYaopingmingzi() {
 		return yaopingmingzi;
