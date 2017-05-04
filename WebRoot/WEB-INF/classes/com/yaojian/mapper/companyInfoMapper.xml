@@ -28,7 +28,7 @@
 		<result column="ziliangfuzeren" property="ziliangfuzeren" />
 	</resultMap>
 
-	<insert id="save" parameterType="com.yaojian.model.CompanyInfo">
+	<insert id="save" parameterType="com.yaojian.model.CompanyInfo" useGeneratedKeys="true" keyProperty="companyid">
 		insert into
 		t_company_info(serverid,bianhao,fenleima,shengshi,qiyemingcheng,fadingdaibiaoren,qiyefuzeren,zhucedizhi,shengchandizhi,shechanfanwei,fazhengriqi,youxiaoqizhi,fazhengjiguan,qianfaren,richangjianguanjigou,richangjianguanrenyuan,shehuixinyongdaima,jiandujubaodianhua,beizhu,ziliangfuzeren)
 		values(#{serverid},#{bianhao},#{fenleima},#{shengshi},#{qiyemingcheng},#{fadingdaibiaoren},#{qiyefuzeren},#{zhucedizhi},#{shengchandizhi},#{shechanfanwei},#{fazhengriqi},#{youxiaoqizhi},#{fazhengjiguan},#{qianfaren},#{richangjianguanjigou},#{richangjianguanrenyuan},#{shehuixinyongdaima},#{jiandujubaodianhua},#{beizhu},#{ziliangfuzeren});
@@ -62,6 +62,6 @@
 	<select id="findByCompanyInfo" parameterType="CompanyInfo" resultType="com.yaojian.model.CompanyInfo">
 		select
 		companyid,serverid,bianhao,fenleima,shengshi,qiyemingcheng,fadingdaibiaoren,qiyefuzeren,zhucedizhi,shengchandizhi,shechanfanwei,fazhengriqi,youxiaoqizhi,fazhengjiguan,qianfaren,richangjianguanjigou,richangjianguanrenyuan,shehuixinyongdaima,jiandujubaodianhua,beizhu,ziliangfuzeren
-		from t_company_info WHERE serverid=#{serverid} AND bianhao=#{bianhao};
+		from t_company_info WHERE bianhao=#{bianhao};
 	</select>
 </mapper>

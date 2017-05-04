@@ -18,6 +18,7 @@ public class AdvertisementInfo {
 	private String guanggaoneirong;
 	private String pizhunweihao;
 	private String beizhu;
+	private String url;
 	
 	public Integer getAdvertiseid() {
 		return advertiseid;
@@ -120,6 +121,12 @@ public class AdvertisementInfo {
 	}
 	public void setServerid(Integer serverid) {
 		this.serverid = serverid;
+	}
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
 	}
 	
 }

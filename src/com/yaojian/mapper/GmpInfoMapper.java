@@ -10,6 +10,7 @@ public interface GmpInfoMapper{
 	boolean update(GmpInfo gmpInfo);
 	boolean delete(int id);
 	GmpInfo findById(int id);
+	GmpInfo findByGmpInfoServerid(int id);
 	GmpInfo findByGmpInfo(GmpInfo gmpInfo);
 	List<GmpInfo> findAll();
 }

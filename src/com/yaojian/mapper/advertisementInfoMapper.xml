@@ -22,12 +22,13 @@
 		<result column="guanggaoneirong" property="guanggaoneirong" />
 		<result column="pizhunweihao" property="pizhunweihao" />
 		<result column="beizhu" property="beizhu" />
+		<result column="url" property="url" />
 	</resultMap>
 
-	<insert id="save" parameterType="com.yaojian.model.AdvertisementInfo">
+	<insert id="save" parameterType="com.yaojian.model.AdvertisementInfo" useGeneratedKeys="true" keyProperty="advertiseid">
 		insert into
-		t_drugsadvertisement_info(serverid,yaopingmingzi,yaopingguanggaopizhuwenhao,danweimingchen,dizhi,youzhengbianma,tongyongmingchen,shangpingmingcheng,shangbiaomingcheng,chufangneixing,guanggaoleixing,shichang,guanggaoyouxiaoqi,guanggaoneirong,pizhunweihao,beizhu)
-		values(#{advertiseid},#{serverid},#{yaopingmingzi},#{yaopingguanggaopizhuwenhao},#{danweimingchen},#{dizhi},#{youzhengbianma},#{tongyongmingchen},#{shangpingmingcheng},#{shangbiaomingcheng},#{chufangneixing},#{guanggaoleixing},#{shichang},#{guanggaoyouxiaoqi},#{guanggaoneirong},#{pizhunweihao},#{beizhu});
+		t_drugsadvertisement_info(serverid,yaopingmingzi,yaopingguanggaopizhuwenhao,danweimingchen,dizhi,youzhengbianma,tongyongmingchen,shangpingmingcheng,shangbiaomingcheng,chufangneixing,guanggaoleixing,shichang,guanggaoyouxiaoqi,guanggaoneirong,pizhunweihao,beizhu,url)
+		values(#{serverid},#{yaopingmingzi},#{yaopingguanggaopizhuwenhao},#{danweimingchen},#{dizhi},#{youzhengbianma},#{tongyongmingchen},#{shangpingmingcheng},#{shangbiaomingcheng},#{chufangneixing},#{guanggaoleixing},#{shichang},#{guanggaoyouxiaoqi},#{guanggaoneirong},#{pizhunweihao},#{beizhu},#{url});
 	</insert>
 
 	<update id="update" parameterType="com.yaojian.model.AdvertisementInfo">
@@ -48,7 +49,8 @@
 		guanggaoyouxiaoqi=#{guanggaoyouxiaoqi},
 		guanggaoneirong=#{guanggaoneirong},
 		pizhunweihao=#{pizhunweihao},
-		beizhu=#{beizhu}
+		beizhu=#{beizhu},
+		url=#{url}
 		where advertiseid=#{advertiseid}
 	</update>
 
@@ -60,21 +62,27 @@
 	<!-- mybsits_config中配置的alias类别名,也可直接配置resultType为类路劲 -->
 	<select id="findById" parameterType="int" resultType="com.yaojian.model.AdvertisementInfo">
 		select
-		advertiseid,serverid,yaopingmingzi,yaopingguanggaopizhuwenhao,danweimingchen,dizhi,youzhengbianma,tongyongmingchen,shangpingmingcheng,shangbiaomingcheng,chufangneixing,guanggaoleixing,shichang,guanggaoyouxiaoqi,guanggaoneirong,pizhunweihao,beizhu
+		advertiseid,serverid,yaopingmingzi,yaopingguanggaopizhuwenhao,danweimingchen,dizhi,youzhengbianma,tongyongmingchen,shangpingmingcheng,shangbiaomingcheng,chufangneixing,guanggaoleixing,shichang,guanggaoyouxiaoqi,guanggaoneirong,pizhunweihao,beizhu,url
 		from t_drugsadvertisement_info where
 		advertiseid=#{advertiseid};
 	</select>
 
 	<select id="findAll" resultType="com.yaojian.model.AdvertisementInfo">
 		select
-		advertiseid,serverid,yaopingmingzi,yaopingguanggaopizhuwenhao,danweimingchen,dizhi,youzhengbianma,tongyongmingchen,shangpingmingcheng,shangbiaomingcheng,chufangneixing,guanggaoleixing,shichang,guanggaoyouxiaoqi,guanggaoneirong,pizhunweihao,beizhu
+		advertiseid,serverid,yaopingmingzi,yaopingguanggaopizhuwenhao,danweimingchen,dizhi,youzhengbianma,tongyongmingchen,shangpingmingcheng,shangbiaomingcheng,chufangneixing,guanggaoleixing,shichang,guanggaoyouxiaoqi,guanggaoneirong,pizhunweihao,beizhu,url
 		from t_drugsadvertisement_info;
 	</select>
 	
 	<select id="findByAdvertisementInfo" parameterType="AdvertisementInfo" resultType="com.yaojian.model.AdvertisementInfo">
 		select
-		advertiseid,serverid,yaopingmingzi,yaopingguanggaopizhuwenhao,danweimingchen,dizhi,youzhengbianma,tongyongmingchen,shangpingmingcheng,shangbiaomingcheng,chufangneixing,guanggaoleixing,shichang,guanggaoyouxiaoqi,guanggaoneirong,pizhunweihao,beizhu
+		advertiseid,serverid,yaopingmingzi,yaopingguanggaopizhuwenhao,danweimingchen,dizhi,youzhengbianma,tongyongmingchen,shangpingmingcheng,shangbiaomingcheng,chufangneixing,guanggaoleixing,shichang,guanggaoyouxiaoqi,guanggaoneirong,pizhunweihao,beizhu,url
 		from t_drugsadvertisement_info WHERE serverid=#{serverid} AND drugsname=#{drugsname};
+	</select>
+	<select id="findByAdvertisementServerid" parameterType="int" resultType="com.yaojian.model.AdvertisementInfo">
+		select
+		advertiseid,serverid,yaopingmingzi,yaopingguanggaopizhuwenhao,danweimingchen,dizhi,youzhengbianma,tongyongmingchen,shangpingmingcheng,shangbiaomingcheng,chufangneixing,guanggaoleixing,shichang,guanggaoyouxiaoqi,guanggaoneirong,pizhunweihao,beizhu,url
+		from t_drugsadvertisement_info where
+		serverid=#{serverid};
 	</select>
 </mapper>
 

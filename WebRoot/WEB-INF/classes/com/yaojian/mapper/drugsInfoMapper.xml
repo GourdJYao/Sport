@@ -22,12 +22,15 @@
 		<result column="yaopinbenweima" property="yaopinbenweima" />
 		<result column="yaopinbenweimabeizhu" property="yaopinbenweimabeizhu" />
 		<result column="gmplist" property="gmplist" />
+		<result column="advertisementlist" property="advertisementlist" />
+		<result column="url" property="url" />
 	</resultMap>
 
-	<insert id="save" parameterType="com.yaojian.model.DrugsInfo">
-		insert into
-		t_cn_drugs_info(cfdaid,drugsname,pizhuwenhao,yingwenmingchen,shangpingming,jixing,guige, shengchandanweiid,shengchangdanweiname,shengchandizhi,chanpinleixing,pizhunriqi,yuanpizhuwenhao,yaopinbenweima,yaopinbenweimabeizhu,gmplist)
-		values(#{cfdaid},#{drugsname},#{pizhuwenhao},#{yingwenmingchen},#{shangpingming},#{jixing},#{guige},#{shengchandanweiid},#{shengchangdanweiname},#{shengchandizhi},#{chanpinleixing},#{pizhunriqi},#{yuanpizhuwenhao},#{yaopinbenweima},#{yaopinbenweimabeizhu},#{gmplist});
+	<insert id="save" parameterType="com.yaojian.model.DrugsInfo" useGeneratedKeys="true" keyProperty="drugsid">
+	insert into
+	t_cn_drugs_info(cfdaid,drugsname,pizhuwenhao,yingwenmingchen,shangpingming,jixing,guige,
+	shengchandanweiid,shengchangdanweiname,shengchandizhi,chanpinleixing,pizhunriqi,yuanpizhuwenhao,yaopinbenweima,yaopinbenweimabeizhu,gmplist,advertisementlist,url)
+	values(#{cfdaid},#{drugsname},#{pizhuwenhao},#{yingwenmingchen},#{shangpingming},#{jixing},#{guige},#{shengchandanweiid},#{shengchangdanweiname},#{shengchandizhi},#{chanpinleixing},#{pizhunriqi},#{yuanpizhuwenhao},#{yaopinbenweima},#{yaopinbenweimabeizhu},#{gmplist},#{advertisementlist},#{url});
 	</insert>
 
 	<update id="update" parameterType="com.yaojian.model.DrugsInfo">
@@ -47,7 +50,9 @@
 		yuanpizhuwenhao=#{yuanpizhuwenhao},
 		yaopinbenweima=#{yaopinbenweima},
 		yaopinbenweimabeizhu=#{yaopinbenweimabeizhu},
-		gmplist=#{gmplist}
+		gmplist=#{gmplist},
+		advertisementlist=#{advertisementlist},
+		url=#{url}
 		where drugsid=#{drugsid}
 	</update>
 
@@ -59,20 +64,20 @@
 	<!-- mybsits_config中配置的alias类别名,也可直接配置resultType为类路劲 -->
 	<select id="findById" parameterType="int" resultType="com.yaojian.model.DrugsInfo">
 		select
-		drugsid,cfdaid,drugsname,pizhuwenhao,yingwenmingchen,shangpingming,jixing,guige, shengchandanweiid,shengchangdanweiname,shengchandizhi,chanpinleixing,pizhunriqi,yuanpizhuwenhao,yaopinbenweima,yaopinbenweimabeizhu,gmplist
+		drugsid,cfdaid,drugsname,pizhuwenhao,yingwenmingchen,shangpingming,jixing,guige, shengchandanweiid,shengchangdanweiname,shengchandizhi,chanpinleixing,pizhunriqi,yuanpizhuwenhao,yaopinbenweima,yaopinbenweimabeizhu,gmplist,advertisementlist,url
 		from t_cn_drugs_info where
 		drugsid=#{drugsid};
 	</select>
 
 	<select id="findAll" resultType="com.yaojian.model.DrugsInfo">
 		select
-		drugsid,cfdaid,drugsname,pizhuwenhao,yingwenmingchen,shangpingming,jixing,guige, shengchandanweiid,shengchangdanweiname,shengchandizhi,chanpinleixing,pizhunriqi,yuanpizhuwenhao,yaopinbenweima,yaopinbenweimabeizhu,gmplist
+		drugsid,cfdaid,drugsname,pizhuwenhao,yingwenmingchen,shangpingming,jixing,guige, shengchandanweiid,shengchangdanweiname,shengchandizhi,chanpinleixing,pizhunriqi,yuanpizhuwenhao,yaopinbenweima,yaopinbenweimabeizhu,gmplist,advertisementlist,url
 		from t_cn_drugs_info;
 	</select>
 	
 	<select id="findByDrugsInfo" parameterType="DrugsInfo" resultType="com.yaojian.model.DrugsInfo">
 		select
-		drugsid,cfdaid,drugsname,pizhuwenhao,yingwenmingchen,shangpingming,jixing,guige, shengchandanweiid,shengchangdanweiname,shengchandizhi,chanpinleixing,pizhunriqi,yuanpizhuwenhao,yaopinbenweima,yaopinbenweimabeizhu,gmplist
+		drugsid,cfdaid,drugsname,pizhuwenhao,yingwenmingchen,shangpingming,jixing,guige, shengchandanweiid,shengchangdanweiname,shengchandizhi,chanpinleixing,pizhunriqi,yuanpizhuwenhao,yaopinbenweima,yaopinbenweimabeizhu,gmplist,advertisementlist,url
 		from t_cn_drugs_info WHERE cfdaid=#{cfdaid} AND drugsname=#{drugsname};
 	</select>
 </mapper>

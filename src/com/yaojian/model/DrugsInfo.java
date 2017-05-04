@@ -18,6 +18,8 @@ public class DrugsInfo {
 	private String yaopinbenweima;
 	private String yaopinbenweimabeizhu;
 	private String gmplist;
+	private String advertisementlist;
+	private String url;
 
 	public Integer getDrugsid() {
 		return drugsid;
@@ -153,6 +155,22 @@ public class DrugsInfo {
 
 	public void setGmplist(String gmplist) {
 		this.gmplist = gmplist;
+	}
+
+	public String getAdvertisementlist() {
+		return advertisementlist;
+	}
+
+	public void setAdvertisementlist(String advertisementlist) {
+		this.advertisementlist = advertisementlist;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 }

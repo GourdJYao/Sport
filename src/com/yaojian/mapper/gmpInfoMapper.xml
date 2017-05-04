@@ -19,17 +19,18 @@
 		<result column="pizhuyanxuderenzhengfanwei" property="pizhuyanxuderenzhengfanwei" />
 		<result column="renzhengmpbanben" property="renzhengmpbanben" />
 		<result column="beizhu" property="beizhu" />
+		<result column="url" property="url" />
 	</resultMap>
 
-	<insert id="save" parameterType="com.yaojian.model.GmpInfo">
+	<insert id="save" parameterType="com.yaojian.model.GmpInfo" useGeneratedKeys="true" keyProperty="gmpid">
 		insert into
-		t_gmp_info(serverid,gongsimingchen,shengfen,zhengshubianhao,dizhi,rengzhengfanwei,fazhengshijian,youxiaojiezhiri,pizhuyanxuriqi,youxiaoqiyanxuzhi,pizhuyanxuderenzhengfanwei,renzhengmpbanben,beizhu)
-		values(#{serverid},#{gongsimingchen},#{shengfen},#{zhengshubianhao},#{dizhi},#{rengzhengfanwei},#{fazhengshijian},#{youxiaojiezhiri},#{pizhuyanxuriqi},#{youxiaoqiyanxuzhi},#{pizhuyanxuderenzhengfanwei},#{renzhengmpbanben},#{beizhu});
+		t_gmp_info(serverid,gongsimingchen,shengfen,zhengshubianhao,dizhi,rengzhengfanwei,fazhengshijian,youxiaojiezhiri,pizhuyanxuriqi,youxiaoqiyanxuzhi,pizhuyanxuderenzhengfanwei,renzhengmpbanben,beizhu,url)
+		values(#{serverid},#{gongsimingchen},#{shengfen},#{zhengshubianhao},#{dizhi},#{rengzhengfanwei},#{fazhengshijian},#{youxiaojiezhiri},#{pizhuyanxuriqi},#{youxiaoqiyanxuzhi},#{pizhuyanxuderenzhengfanwei},#{renzhengmpbanben},#{beizhu},#{url});
 	</insert>
 
 	<update id="update" parameterType="com.yaojian.model.GmpInfo">
 		update t_gmp_info set
-		gmpid=#{gmpid},serverid=#{serverid},gongsimingchen=#{gongsimingchen},shengfen=#{shengfen},zhengshubianhao=#{zhengshubianhao},dizhi=#{dizhi},rengzhengfanwei=#{rengzhengfanwei},fazhengshijian=#{fazhengshijian},youxiaojiezhiri=#{youxiaojiezhiri},pizhuyanxuriqi=#{pizhuyanxuriqi},youxiaoqiyanxuzhi=#{youxiaoqiyanxuzhi},pizhuyanxuderenzhengfanwei=#{pizhuyanxuderenzhengfanwei},renzhengmpbanben=#{renzhengmpbanben},beizhu=#{beizhu}
+		gmpid=#{gmpid},serverid=#{serverid},gongsimingchen=#{gongsimingchen},shengfen=#{shengfen},zhengshubianhao=#{zhengshubianhao},dizhi=#{dizhi},rengzhengfanwei=#{rengzhengfanwei},fazhengshijian=#{fazhengshijian},youxiaojiezhiri=#{youxiaojiezhiri},pizhuyanxuriqi=#{pizhuyanxuriqi},youxiaoqiyanxuzhi=#{youxiaoqiyanxuzhi},pizhuyanxuderenzhengfanwei=#{pizhuyanxuderenzhengfanwei},renzhengmpbanben=#{renzhengmpbanben},beizhu=#{beizhu},url=#{url}
 		where gmpid=#{gmpid}
 	</update>
 
@@ -41,22 +42,31 @@
 	<!-- mybsits_config中配置的alias类别名,也可直接配置resultType为类路劲 -->
 	<select id="findById" parameterType="int" resultType="com.yaojian.model.GmpInfo">
 		select
-		gmpid,serverid,gongsimingchen,shengfen,zhengshubianhao,dizhi,rengzhengfanwei,fazhengshijian,youxiaojiezhiri,pizhuyanxuriqi,youxiaoqiyanxuzhi,pizhuyanxuderenzhengfanwei,renzhengmpbanben,beizhu,serverid,gongsimingchen,shengfen,zhengshubianhao,dizhi,rengzhengfanwei,fazhengshijian,youxiaojiezhiri,pizhuyanxuriqi,youxiaoqiyanxuzhi,pizhuyanxuderenzhengfanwei,renzhengmpbanben,beizhu
+		gmpid,serverid,gongsimingchen,shengfen,zhengshubianhao,dizhi,rengzhengfanwei,fazhengshijian,youxiaojiezhiri,pizhuyanxuriqi,youxiaoqiyanxuzhi,pizhuyanxuderenzhengfanwei,renzhengmpbanben,beizhu,serverid,gongsimingchen,shengfen,zhengshubianhao,dizhi,rengzhengfanwei,fazhengshijian,youxiaojiezhiri,pizhuyanxuriqi,youxiaoqiyanxuzhi,pizhuyanxuderenzhengfanwei,renzhengmpbanben,beizhu,url
 		from t_gmp_info where
 		gmpid=#{gmpid};
 	</select>
 
 	<select id="findAll" resultType="com.yaojian.model.GmpInfo">
 		select
-		gmpid,serverid,gongsimingchen,shengfen,zhengshubianhao,dizhi,rengzhengfanwei,fazhengshijian,youxiaojiezhiri,pizhuyanxuriqi,youxiaoqiyanxuzhi,pizhuyanxuderenzhengfanwei,renzhengmpbanben,beizhu,serverid,gongsimingchen,shengfen,zhengshubianhao,dizhi,rengzhengfanwei,fazhengshijian,youxiaojiezhiri,pizhuyanxuriqi,youxiaoqiyanxuzhi,pizhuyanxuderenzhengfanwei,renzhengmpbanben,beizhu
+		gmpid,serverid,gongsimingchen,shengfen,zhengshubianhao,dizhi,rengzhengfanwei,fazhengshijian,youxiaojiezhiri,pizhuyanxuriqi,youxiaoqiyanxuzhi,pizhuyanxuderenzhengfanwei,renzhengmpbanben,beizhu,serverid,gongsimingchen,shengfen,zhengshubianhao,dizhi,rengzhengfanwei,fazhengshijian,youxiaojiezhiri,pizhuyanxuriqi,youxiaoqiyanxuzhi,pizhuyanxuderenzhengfanwei,renzhengmpbanben,beizhu,url
 		from t_gmp_info;
 	</select>
 
 	<select id="findByGmpInfo" parameterType="GmpInfo"
 		resultType="com.yaojian.model.GmpInfo">
 		select
-		gmpid,serverid,gongsimingchen,shengfen,zhengshubianhao,dizhi,rengzhengfanwei,fazhengshijian,youxiaojiezhiri,pizhuyanxuriqi,youxiaoqiyanxuzhi,pizhuyanxuderenzhengfanwei,renzhengmpbanben,beizhu,serverid,gongsimingchen,shengfen,zhengshubianhao,dizhi,rengzhengfanwei,fazhengshijian,youxiaojiezhiri,pizhuyanxuriqi,youxiaoqiyanxuzhi,pizhuyanxuderenzhengfanwei,renzhengmpbanben,beizhu
+		gmpid,serverid,gongsimingchen,shengfen,zhengshubianhao,dizhi,rengzhengfanwei,fazhengshijian,youxiaojiezhiri,pizhuyanxuriqi,youxiaoqiyanxuzhi,pizhuyanxuderenzhengfanwei,renzhengmpbanben,beizhu,serverid,gongsimingchen,shengfen,zhengshubianhao,dizhi,rengzhengfanwei,fazhengshijian,youxiaojiezhiri,pizhuyanxuriqi,youxiaoqiyanxuzhi,pizhuyanxuderenzhengfanwei,renzhengmpbanben,beizhu,url
 		from t_gmp_info WHERE serverid=#{serverid} AND
 		gongsimingchen=#{gongsimingchen};
 	</select>
+	
+	<select id="findByGmpInfoServerid" parameterType="int"
+		resultType="com.yaojian.model.GmpInfo">
+		select
+		gmpid,serverid,gongsimingchen,shengfen,zhengshubianhao,dizhi,rengzhengfanwei,fazhengshijian,youxiaojiezhiri,pizhuyanxuriqi,youxiaoqiyanxuzhi,pizhuyanxuderenzhengfanwei,renzhengmpbanben,beizhu,serverid,gongsimingchen,shengfen,zhengshubianhao,dizhi,rengzhengfanwei,fazhengshijian,youxiaojiezhiri,pizhuyanxuriqi,youxiaoqiyanxuzhi,pizhuyanxuderenzhengfanwei,renzhengmpbanben,beizhu,url
+		from t_gmp_info where
+		serverid=#{serverid};
+	</select>
+	
 </mapper>

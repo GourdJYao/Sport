@@ -11,5 +11,6 @@ public interface AdvertisementInfoMapper{
 	boolean delete(int id);
 	AdvertisementInfo findById(int id);
 	AdvertisementInfo findByAdvertisementInfo(AdvertisementInfo advertisementInfo);
+	AdvertisementInfo findByAdvertisementServerid(Integer serverid);
 	List<AdvertisementInfo> findAll();
 }
