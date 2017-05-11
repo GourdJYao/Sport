@@ -8,6 +8,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.aop.ThrowsAdvice;
 import org.springframework.test.context.ContextConfiguration;
 
 import com.yaojian.model.AdvertisementInfo;
@@ -19,7 +20,7 @@ import com.yaojian.model.GmpInfo;
 public class DrugsInfoTools {
 	private static String url = "http://app2.sfda.gov.cn/datasearchp/index1.do?tableId=25&tableName=TABLE25&tableView=国产药品&Id=";
 
-	public List<List<String>> parseCertificatesInfo(int page) {
+	public List<List<String>> parseCertificatesInfo(int page) throws Exception{
 		String urlString = url + page;
 		System.out.println("urlString:" + urlString);
 		Document document = null;
@@ -80,13 +81,16 @@ public class DrugsInfoTools {
 				// resultList.add(advertisementInfoArrayList);
 				// }
 				// System.out.println("==============================================================");
-				Thread.sleep(2000);
+				Thread.sleep(3000);
 				break;
 			} catch (Exception e) {
 				e.printStackTrace();
 				successCount++;
 			}
 		} while (successCount < 3);
+		if (successCount >= 3) {
+			throw new Exception("Error http connect!");
+		}
 		return resultList;
 	}
 
@@ -315,7 +319,7 @@ public class DrugsInfoTools {
 
 	public static void main(String[] args) {
 		DrugsInfoTools drugsInfoTools = new DrugsInfoTools();
-		drugsInfoTools.parseCertificatesInfo(57897);
+//		drugsInfoTools.parseCertificatesInfo(57897);
 	}
 
 	public CompanyInfo getCompanyInfo(List<String> companyInfoList) {
@@ -426,7 +430,7 @@ public class DrugsInfoTools {
 		DrugsInfo drugsInfo = new DrugsInfo();
 		String drugsInfoString = "";
 		drugsInfo.setCfdaid(serverid);
-		drugsInfo.setUrl(url+serverid);
+		drugsInfo.setUrl(url + serverid);
 		for (int i = 0; i < drugsInfoList.size(); i++) {
 			drugsInfoString = drugsInfoList.get(i);
 			System.out.println("drugsInfo:" + drugsInfoString);

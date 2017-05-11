@@ -34,8 +34,13 @@ public class DrugsInfoTest {
 	public void testAdd() {
 		DrugsInfoTools drugsInfoTools = new DrugsInfoTools();
 		List<List<String>> drugsAllInfoList;
-		for (int i = 3863; i <= 58199; i++) {
-			drugsAllInfoList = drugsInfoTools.parseCertificatesInfo(i);
+		for (int i = 10717; i <= 58199; i++) {
+			try {
+				drugsAllInfoList = drugsInfoTools.parseCertificatesInfo(i);
+			} catch (Exception e) {
+				e.printStackTrace();
+				break;
+			}
 			if (drugsAllInfoList != null && drugsAllInfoList.size() > 0) {
 				List<String> drugsInfoList = drugsAllInfoList.get(0);
 				List<String> companyInfoList = drugsAllInfoList.get(1);
@@ -51,7 +56,7 @@ public class DrugsInfoTest {
 						AdvertisementInfo tempAdvertisement = advertisementInfoMapper
 								.findByAdvertisementServerid(serverid);
 						if (tempAdvertisement != null) {
-							advertisementIdList+= tempAdvertisement.getAdvertiseid() + ",";
+							advertisementIdList += tempAdvertisement.getAdvertiseid() + ",";
 						} else {
 							tempAdvertisement = drugsInfoTools.getAdvertisementInfoList(advertisementUrl, serverid);
 							if (tempAdvertisement != null
@@ -68,7 +73,7 @@ public class DrugsInfoTest {
 						serverid = Integer.parseInt(gmpUrl.split("&Id=")[1]);
 						GmpInfo tempGmpInfo = gmpInfoMapper.findByGmpInfoServerid(serverid);
 						if (tempGmpInfo != null) {
-							gmpIdList+= tempGmpInfo.getGmpid() + ",";
+							gmpIdList += tempGmpInfo.getGmpid() + ",";
 						} else {
 							tempGmpInfo = drugsInfoTools.getGmpInfoList(gmpUrl, serverid);
 							if (tempGmpInfo != null && tempGmpInfo.getZhengshubianhao() != null) {
@@ -86,7 +91,7 @@ public class DrugsInfoTest {
 								|| tempCompanyInfo.getBianhao().trim().length() == 0) {
 							companyInfoMapper.save(companyInfo);
 							companyid = companyInfo.getCompanyid();
-						}else{
+						} else {
 							companyid = tempCompanyInfo.getCompanyid();
 						}
 					}
