@@ -33,13 +33,16 @@ public class DrugsInfoTest {
 	@Test
 	public void testAdd() {
 		DrugsInfoTools drugsInfoTools = new DrugsInfoTools();
-		List<List<String>> drugsAllInfoList;
-		for (int i = 10717; i <= 58199; i++) {
+		List<List<String>> drugsAllInfoList = null;
+		for (int i = 32932; i <= 58199; i++) {
 			try {
 				drugsAllInfoList = drugsInfoTools.parseCertificatesInfo(i);
 			} catch (Exception e) {
-				e.printStackTrace();
-				break;
+				try {
+					Thread.sleep(60*60*1000);
+				} catch (InterruptedException e1) {
+					e1.printStackTrace();
+				}
 			}
 			if (drugsAllInfoList != null && drugsAllInfoList.size() > 0) {
 				List<String> drugsInfoList = drugsAllInfoList.get(0);
